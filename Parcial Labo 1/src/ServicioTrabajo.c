@@ -271,19 +271,21 @@ int BuscarElServicioConMasTrabajos(eServicio listaServ[], int tamServ, eTrabajo 
 {
 	eAux auxiliar[tamServ];
 	int trabajoMaximo = 0;
-
+	int retorno = -1;
 
 	aux_inicializar(auxiliar, listaServ, tamServ);
 
-	aux_contar(auxiliar, listaServ, tamServ, listaTrabajo, tamTrab);
+	if(aux_contar(auxiliar, listaServ, tamServ, listaTrabajo, tamTrab) == 1 &&
+			buscarElMayor(auxiliar, listaServ, tamServ, &trabajoMaximo) == 1)
 
-	buscarElMayor(auxiliar, listaServ, tamServ, &trabajoMaximo);
+		{
+			retorno = 1;
+			inf_MostrarMaximo(trabajoMaximo, auxiliar, listaServ,tamServ , listaTrabajo, tamTrab);
+		}
 
-	inf_MostrarMaximo(trabajoMaximo, auxiliar, listaServ,tamServ , listaTrabajo, tamTrab);
 
 
-
-	return 0;
+	return retorno;
 }
 
 void aux_inicializar(eAux aux[], eServicio listaServ[],int tamAux)
@@ -307,7 +309,7 @@ int aux_contar(eAux aux[], eServicio listaServ[], int tamAux, eTrabajo listaTrab
 	{
 		for(j=0; j<tamTrab; j++)
 		{
-			if(aux[i].id ==  listaTrabajo[j].idServicio)
+			if(aux[i].id ==  listaTrabajo[j].idServicio && listaTrabajo[j].isEmpty == 1)
 			{
 				aux[i].contador++;
 				retorno = 1;
@@ -344,9 +346,9 @@ int inf_MostrarMaximo(int maximo, eAux aux[], eServicio listaServ[],int tamAux, 
 		{
 			for(j=0; j<tamTrab; j++)
 			{
-				if(aux[i].id == listaServ[j].id)
+				if(aux[i].id == listaServ[j].id && listaTrab[j].isEmpty == 1)
 				{
-					printf("Maximo: %s con %d trabajo(s)\n", listaServ[j].descripcion, aux[i].contador);
+					printf("El servicio que más trabajos realizó es: %s con %d trabajo(s)\n", listaServ[j].descripcion, aux[i].contador);
 					break;
 				}
 			}
@@ -379,4 +381,35 @@ int CantidadBicicletasRojas(eBicicleta listaBici[], int tamBici, eTrabajo listaT
 	return retorno;
 }
 
+int ListarSeviciosConBicicletas(eBicicleta listaBici[], int tamBici, eTrabajo listaTrabajo[], int tamTrab, eServicio listaServ[],int tamServ)
+{
+	int i;
+	int j;
+	int z;
+	int retorno = -1;
 
+	for(i=0; i<tamServ; i++)
+	{
+		if(listaServ[i].isEmpty == 1)
+		{
+			printf("%s\n", listaServ[i].descripcion);
+		}
+
+		for(j=0; j<tamTrab; j++)
+		{
+			if(listaTrabajo[j].isEmpty == 1)
+			{
+				for(z=0; z<tamBici; z++)
+				{
+					if(listaTrabajo[j].idBici == listaBici[z].id && listaServ[i].id == listaTrabajo[j].idServicio)
+					{
+						printf(" -%s\n", listaBici[z].marca);
+						retorno = 1;
+					}
+				}
+			}
+		}
+	}
+
+	return retorno;
+}

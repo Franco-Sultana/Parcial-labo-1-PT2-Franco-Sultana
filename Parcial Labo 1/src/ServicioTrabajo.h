@@ -120,15 +120,102 @@ int CalcularTotalServicios(eTrabajo listaTrabajo[], int tamTrab, eServicio lista
  */
 int MenuOpcionesModificar(void);
 
-
+/**
+ * @fn void OrdenarListaPorMarca(eTrabajo[], int, eBicicleta[], int)
+ * @brief Ordena la lista por marca de bicicletas
+ *
+ * @param listaTrabajo array de trabajos
+ * @param tamTrab tamaño del array de trabajos
+ * @param listaBici array de bicicletas
+ * @param tamBici tamaño del array de bicicletas
+ */
 void OrdenarListaPorMarca(eTrabajo listaTrabajo[], int tamTrab, eBicicleta listaBici[], int tamBici);
 
+/**
+ * @fn int BuscarElServicioConMasTrabajos(eServicio[], int, eTrabajo[], int)
+ * @brief Busca el servicio que más trabajos realizó
+ *
+ * @param listaServ array de servicios
+ * @param tamServ tamaño del array de servicios
+ * @param listaTrabajo array del array de trabajos
+ * @param tamTrab tamaño del array e trabajos
+ * @return 1 si pudo encontrarlo, -1 si no
+ */
 int BuscarElServicioConMasTrabajos(eServicio listaServ[], int tamServ, eTrabajo listaTrabajo[], int tamTrab);
+
+/**
+ * @fn void aux_inicializar(eAux[], eServicio[], int)
+ * @brief Inicializa la estructura de auxiliar
+ *
+ * @param aux array de auxiliar
+ * @param listaServ array de servicios
+ * @param tamAux tamaño de servicios, que es el mismo que el de aux
+ */
 void aux_inicializar(eAux aux[], eServicio listaServ[],int tamAux);
+
+/**
+ * @fn int aux_contar(eAux[], eServicio[], int, eTrabajo[], int)
+ * @brief Cuenta la cantidad de trabajos por servicios
+ *
+ * @param aux array de auxiliar
+ * @param listaServ array de servicios
+ * @param tamAux tamaño de servicios, que es el mismo que el de aux
+ * @param listaTrabajo array de trabajos
+ * @param tamTrab tamaño del array de trabajos
+ * @return 1 si pudo contar, -1 si no
+ */
 int aux_contar(eAux aux[], eServicio listaServ[], int tamAux, eTrabajo listaTrabajo[], int tamTrab);
+
+/**
+ * @fn int buscarElMayor(eAux[], eServicio[], int, int*)
+ * @brief Busca el mayor
+ *
+ * @param aux array de auxiliar
+ * @param listaServ array de servicios
+ * @param tamAux tamaño de servicios, que es el mismo que el de aux
+ * @param max puntero a direeccion de memoria donde se va a copiar el maximo
+ * @return 1 si pudo encontrar el maximo, -1 si no
+ */
 int buscarElMayor(eAux aux[], eServicio listaServ[], int tamAux, int* max);
-int inf_MostrarMaximo(int maximo, eAux aux[], eServicio listaServ[],int tamAux, eTrabajo listaTrab[], int tamTrab);
 
+/**
+ * @fn int inf_MostrarMaximo(int, eAux[], eServicio[], int, eTrabajo[], int)
+ * @brief Busca si hay otros servicios con el mismo num de trabajos que el maximo, y los muestra
+ *
+ * @param maximo el numero maximo
+ * @param aux array de auxilair
+ * @param listaServ array de servicios
+ * @param tamAux tamaño de servicios, que es el mismo que el de aux
+ * @param listaTrab array de trabajos
+ * @param tamTrab tamaño del array de trabajos
+ * @return 1 si pudo mostrar, -1 si no
+ */int inf_MostrarMaximo(int maximo, eAux aux[], eServicio listaServ[],int tamAux, eTrabajo listaTrab[], int tamTrab);
 
+/**
+ * @fn int CantidadBicicletasRojas(eBicicleta[], int, eTrabajo[], int)
+ * @brief cuenta cuantas bicicletas rojas hay
+ *
+ * @param listaBici array de bicicletas
+ * @param tamBici tamaño del array de bicicletas
+ * @param listaTrabajo array de trabajo
+ * @param tamTrab tamaño del array de trabajo
+ * @return 1 si pudo contar, -1 si no
+ */
 int CantidadBicicletasRojas(eBicicleta listaBici[], int tamBici, eTrabajo listaTrabajo[], int tamTrab);
+
+/**
+ * @fn int ListarSeviciosConBicicletas(eBicicleta[], int, eTrabajo[], int, eServicio[], int)
+ * @brief lista los servicios con los trabajos que se realizaron con ellos
+ *
+ * @param listaBici array de bicicletas
+ * @param tamBici tamaño de array de bicicletas
+ * @param listaTrabajo array de trabajo
+ * @param tamTrab tamaño de array de trabajo
+ * @param listaServ array de servicios
+ * @param tamServ tamaño del array de sevicios
+ * @return 1 si pudo mostrar, -1 si no
+ */
+int ListarSeviciosConBicicletas(eBicicleta listaBici[], int tamBici, eTrabajo listaTrabajo[],
+									int tamTrab, eServicio listaServ[],int tamServ);
+
 #endif /* SERVICIOTRABAJO_H_ */

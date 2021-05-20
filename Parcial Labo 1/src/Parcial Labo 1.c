@@ -111,7 +111,18 @@ int main(void)
 			}
 		break;
 		case 8:
-			BuscarElServicioConMasTrabajos(listaServicio, TAM_SERVICIO, listaTrabajos, TAM_TRABAJO);
+			if(BuscarElServicioConMasTrabajos(listaServicio, TAM_SERVICIO, listaTrabajos, TAM_TRABAJO) != 1)
+			{
+				printf("No hay trabajos dados de alta");
+			}
+
+		break;
+		case 9:
+			if(ListarSeviciosConBicicletas(listaBicicleta, TAM_BICI, listaTrabajos, TAM_TRABAJO, listaServicio, TAM_SERVICIO) != 1)
+			{
+				printf("No se ingresaron trabajos.");
+			}
+
 		break;
 		case 10:
 			contadorRojas = CantidadBicicletasRojas(listaBicicleta, TAM_BICI, listaTrabajos, TAM_TRABAJO);
@@ -123,18 +134,7 @@ int main(void)
 			{
 				printf("No hay bicicletas rojas");
 			}
-			/*switch(contadorRojas)
-			{
-			case 1:
-				printf("La cantidad de bicicletas rojas es: %d", contadorRojas);
-			break;
-			case 0:
-				printf("No hay bicicletas rojas entre los trabajos dados de alta");
-			break;
-			case -1:
-				printf("Aun no hay trabajos dados de alta");
-			break;
-			}*/
+
 		break;
 		}
 

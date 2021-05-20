@@ -14,9 +14,9 @@ int MenuOpcionesTrabajo(void)
 			"-3. Baja\n -4. Mostrar trabajos\n -5. Mostrar servicios\n "
 			"-6. Calcular total por servicios prestados\n "
 			"-7. Lista ordenada por marca de bicicleta\n "
-			"-8. Lista de trabajos ordenados por marca de bicicleta"
-			"-9. Mostrar servicios con mas trabajos realizados\n "
-			"-11. Cantidad de bicicletas rojas\n");
+			"-8. Servicios que mas trabajos realizaron\n "
+			"-9. Listado de servicios con bicicletas que lo realizaron\n "
+			"-10. Cantidad de bicicletas rojas\n ");
 	utn_getEnteroSinReintentos(&opcion, "Ingrese una opcion: ", "Opcion inválida. ", 0, 11);
 	return opcion;
 }
